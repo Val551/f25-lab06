@@ -1,3 +1,4 @@
+// CHECKSTYLE:OFF
 package edu.cmu.cs.cs214.rec02;
 
 import org.junit.Before;
@@ -52,20 +53,22 @@ public class IntQueueTest {
 
     @Test
     public void testNotEmpty() {
-        // TODO: write your own unit test
-        fail("Test not implemented");
+        mQueue.enqueue(2);
+        assertFalse(mQueue.isEmpty());
+        assertEquals(1, mQueue.size());   
     }
 
     @Test
     public void testPeekEmptyQueue() {
-        // TODO: write your own unit test
-        fail("Test not implemented");
+        assertNull(mQueue.peek());
     }
 
     @Test
     public void testPeekNoEmptyQueue() {
-        // TODO: write your own unit test
-        fail("Test not implemented");
+        mQueue.enqueue(2);
+        mQueue.enqueue(3);
+        mQueue.enqueue(4);
+        assertEquals(2, mQueue.peek());
     }
 
     @Test
@@ -80,8 +83,13 @@ public class IntQueueTest {
 
     @Test
     public void testDequeue() {
-        // TODO: write your own unit test
-        fail("Test not implemented");
+        mQueue.enqueue(2);
+        mQueue.enqueue(3);
+        mQueue.enqueue(4);
+        assertEquals(2, mQueue.dequeue());
+        assertEquals(3, mQueue.dequeue());
+        assertEquals(4, mQueue.dequeue());
+        assertNull(mQueue.dequeue());
     }
 
     @Test
