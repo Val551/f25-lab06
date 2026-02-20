@@ -4,6 +4,7 @@ package edu.cmu.cs.cs214.rec02;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.beans.Transient;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -71,6 +72,8 @@ public class IntQueueTest {
         assertEquals((Integer) 2, mQueue.peek());
     }
 
+
+
     @Test
     public void testEnqueue() {
         // This is an example unit test
@@ -78,6 +81,27 @@ public class IntQueueTest {
             mQueue.enqueue(testList.get(i));
             assertEquals(testList.get(0), mQueue.peek());
             assertEquals(i + 1, mQueue.size());
+        }
+    }
+
+    @Test
+    public void testClear() {
+        mQueue.enqueue(2);
+        mQueue.enqueue(3);
+        mQueue.enqueue(4);
+        mQueue.clear();
+        assertTrue(mQueue.isEmpty());
+    }
+
+    @Test
+    public void testCapacity() {
+        mQueue.enqueue(0);
+        mQueue.dequeue();
+        for (int i = 1; i <= 11; i++) {
+            mQueue.enqueue(i);
+        }
+        for (int i = 1; i <= 11; i++) {
+            assertEquals((Integer) i, mQueue.dequeue());
         }
     }
 
